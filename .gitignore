@@ -1,0 +1,12 @@
+# JetBeans stuff
+*.idea
+
+# venvs
+venv
+
+# databases
+db.sqlite3
+
+# collect static and media folders
+media
+static
