@@ -8,8 +8,8 @@ venv
 db.sqlite3
 
 # collect static and media folders
-media
-static
+/media
+/static
 
 # Environment related settings
 .env
