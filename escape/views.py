@@ -1,5 +1,6 @@
+from django.conf import settings
 from django.shortcuts import render
-from django.views.decorators.clickjacking import xframe_options_exempt
+
 
 from .models import Room
 
@@ -7,12 +8,12 @@ from .models import Room
 def index(request):
     rooms = Room.objects.all()
     context = {
-        "rooms": rooms
+        "rooms": rooms,
+        "avatar_url": settings.MAIN_PAGE_AVATAR
     }
     return render(request, "index.html", context)
 
 
-# @xframe_options_exempt
 def room(request, room_id):
     room = Room.objects.get(id=room_id)
     context = {

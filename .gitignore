@@ -10,3 +10,6 @@ db.sqlite3
 # collect static and media folders
 media
 static
+
+# Environment related settings
+.env

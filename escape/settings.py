@@ -10,22 +10,33 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import environ
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False),
+    THEME_PRIMARY_COLOUR=(str, '#1abc9c'),
+    THEME_SECONDARY_COLOUR=(str, '#2c3e50'),
+    MAIN_PAGE_AVATAR=(environ.Path, "/escape/assets/img/avataaars.svg"),
+    ALLOWED_HOSTS=(list, [])
+)
+# reading .env file
+environ.Env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '7xcqi2^yx-bt!zz9y_jerc^ri4u185vf65*!o6$ykj*2fk2c3e'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env('ALLOWED_HOSTS')
 
 
 # Application definition
@@ -76,10 +87,7 @@ WSGI_APPLICATION = 'escape.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': env.db()
 }
 
 
@@ -107,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'CET'
 
 USE_I18N = True
 
@@ -124,6 +132,10 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+MAIN_PAGE_AVATAR = env('MAIN_PAGE_AVATAR')
+THEME_PRIMARY_COLOUR = env('THEME_PRIMARY_COLOUR')
+THEME_SECONDARY_COLOUR = env('THEME_SECONDARY_COLOUR')
 
 # Overwrite default user table
 AUTH_USER_MODEL = 'escape.User'
