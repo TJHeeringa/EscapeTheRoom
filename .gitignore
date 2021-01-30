@@ -15,4 +15,5 @@ db.sqlite3
 .env
 
 # Compliled Python
-*/__pycache__/*
+__pycache__/
+*.pyc
