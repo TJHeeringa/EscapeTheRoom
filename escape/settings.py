@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'sass_processor',
     'escape.apps.EscapeConfig',
 ]
 
@@ -133,8 +134,20 @@ STATIC_ROOT = BASE_DIR / 'static'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
+]
+
+SASS_PROCESSOR_ROOT = STATIC_ROOT
+SASS_PROCESSOR_ENABLED = True
+SASS_PRECISION = 8
+
+# Env variables for customizing pages
 MAIN_PAGE_AVATAR = env('MAIN_PAGE_AVATAR')
-THEME_PRIMARY_COLOUR = env('THEME_PRIMARY_COLOUR')
+# THEME_PRIMARY_COLOUR = env('THEME_PRIMARY_COLOUR')
+THEME_PRIMARY_COLOUR = "#e6b800"
 THEME_SECONDARY_COLOUR = env('THEME_SECONDARY_COLOUR')
 
 # Overwrite default user table

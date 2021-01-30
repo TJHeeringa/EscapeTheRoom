@@ -21,7 +21,6 @@
         <div class="container d-flex align-items-center flex-column">
             <!-- Masthead Avatar Image-->
             <img class="masthead-avatar mb-5" src="{% static avatar_url %}" alt="" />
-{#            <img class="masthead-avatar mb-5" src="{% static 'escape/assets/img/avataaars.svg' %}" alt="" />#}
             <!-- Masthead Heading-->
             <h1 class="masthead-heading text-uppercase mb-0">Escape the Room</h1>
             <!-- Icon Divider-->
@@ -58,7 +57,6 @@
                                 <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
                             </div>
                             <img class="img-fluid" src="{{ MEDIA_URL }}{{ room.photo }}" alt="{{ room.photo }}" />
-{#                            <img class="img-fluid" src="{% static 'escape/assets/img/portfolio/cabin.png' %}" alt="" />#}
                         </div>
                     </div>
                 {% endfor %}

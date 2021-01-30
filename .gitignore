@@ -13,3 +13,6 @@ static
 
 # Environment related settings
 .env
+
+# Compliled Python
+*/__pycache__/*
